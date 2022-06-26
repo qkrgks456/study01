@@ -8,7 +8,7 @@ import java.util.Map;
 public class MemberFormControllerV3 implements ControllerV3 {
 
     @Override
-    public ModelView process(Map<String, Object> param) {
+    public ModelView process(Map<String, String> param) {
         return new ModelView("new-form");
     }
 }

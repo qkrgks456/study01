@@ -42,7 +42,7 @@ public class FrontControllerServletV3 extends HttpServlet {
             return;
         }
         // map 넘겨줘야 함
-        Map<String, Object> paramMap = paramMap(request);
+        Map<String, String> paramMap = paramMap(request);
 
         ModelView modelView = controllerV3.process(paramMap);
 
@@ -55,8 +55,8 @@ public class FrontControllerServletV3 extends HttpServlet {
         return new MyView("/WEB-INF/views/" + viewName + ".jsp");
     }
 
-    private Map<String, Object> paramMap(HttpServletRequest request) {
-        Map<String, Object> map = new HashMap<>();
+    private Map<String, String> paramMap(HttpServletRequest request) {
+        Map<String, String> map = new HashMap<>();
         request.getParameterNames().asIterator().forEachRemaining(paramName -> map.put(paramName, request.getParameter(paramName)));
         return map;
     }
