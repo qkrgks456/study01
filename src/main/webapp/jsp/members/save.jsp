@@ -1,10 +1,10 @@
-<%@ page import="com.example.study01.domain.member.MemberRepo" %>
+<%@ page import="com.example.study01.domain.member.MemberRepository" %>
 <%@ page import="com.example.study01.domain.member.Member" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     // request, response 그냥 사용 가능 (서블릿으로 자동 변환)
-    MemberRepo memberRepository = MemberRepo.getInstance();
+    MemberRepository memberRepository = MemberRepository.getInstance();
     System.out.println("save.jsp");
     String username = request.getParameter("username");
     int age = Integer.parseInt(request.getParameter("age"));

@@ -12,6 +12,9 @@ public class ReqParamServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getLocales()
+                .asIterator()
+                .forEachRemaining(locale -> System.out.println("locale = " + locale));
         System.out.println("ReqParamServlet.service");
         // 전체 파라미터 조회
         req.getParameterNames().asIterator()

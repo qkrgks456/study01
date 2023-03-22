@@ -1,7 +1,7 @@
 package com.example.study01.web.springmvc.v3;
 
 import com.example.study01.domain.member.Member;
-import com.example.study01.domain.member.MemberRepo;
+import com.example.study01.domain.member.MemberRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,25 +15,21 @@ import java.util.List;
 @RequestMapping("/springmvc/v3/members")
 public class SpringMemberControllerV3 {
 
-    private MemberRepo memberRepo = MemberRepo.getInstance();
+    private final MemberRepository memberRepository = MemberRepository.getInstance();
 
-    @GetMapping("/new-form")
-    public String newForm() {
-        return "new-form";
-    }
 
     @GetMapping
     public String members(Model model) {
-        List<Member> members = memberRepo.findAll();
+        List<Member> members = memberRepository.findAll();
         model.addAttribute("members", members);
-        return "members";
+        return "/members";
     }
 
     @PostMapping("/save")
     public String save(@RequestParam("username") String username,
                        @RequestParam("age") int age, Model model) {
-        Member saveMember = memberRepo.save(new Member(username, age));
+        Member saveMember = memberRepository.save(new Member(username, age));
         model.addAttribute("member", saveMember);
-        return "save-result";
+        return "/save-result";
     }
 }

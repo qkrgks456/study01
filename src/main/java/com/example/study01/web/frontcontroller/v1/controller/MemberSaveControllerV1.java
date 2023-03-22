@@ -1,7 +1,7 @@
 package com.example.study01.web.frontcontroller.v1.controller;
 
 import com.example.study01.domain.member.Member;
-import com.example.study01.domain.member.MemberRepo;
+import com.example.study01.domain.member.MemberRepository;
 import com.example.study01.web.frontcontroller.v1.ControllerV1;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class MemberSaveControllerV1 implements ControllerV1 {
 
-    private MemberRepo memberRepo = MemberRepo.getInstance();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,7 +20,7 @@ public class MemberSaveControllerV1 implements ControllerV1 {
         int age = Integer.parseInt(request.getParameter("age"));
 
         Member member = new Member(username, age);
-        Member saveMember = memberRepo.save(member);
+        Member saveMember = memberRepository.save(member);
 
         // Model에 데이터를 보관
         request.setAttribute("member", member);

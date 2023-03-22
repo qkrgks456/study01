@@ -7,9 +7,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-class MemberRepoTest {
+class MemberRepositoryTest {
 
-    MemberRepo memberRepo = MemberRepo.getInstance();
+    MemberRepository memberRepository = MemberRepository.getInstance();
 
 
     @Test
@@ -17,9 +17,9 @@ class MemberRepoTest {
         // given
         Member member = new Member("hello", 13);
         // when
-        Member saveMember = memberRepo.save(member);
+        Member saveMember = memberRepository.save(member);
         // then
-        Member findMember = memberRepo.findById(saveMember.getId());
+        Member findMember = memberRepository.findById(saveMember.getId());
         assertThat(saveMember).isEqualTo(findMember);
     }
 
@@ -28,10 +28,10 @@ class MemberRepoTest {
         // given
         Member member1 = new Member("member1", 20);
         Member member2 = new Member("member2", 30);
-        memberRepo.save(member1);
-        memberRepo.save(member2);
+        memberRepository.save(member1);
+        memberRepository.save(member2);
         // when
-        List<Member> result = memberRepo.findAll();
+        List<Member> result = memberRepository.findAll();
 
         // then
         assertThat(result.size()).isEqualTo(2);

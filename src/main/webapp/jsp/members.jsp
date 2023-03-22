@@ -1,10 +1,10 @@
-<%@ page import="com.example.study01.domain.member.MemberRepo" %>
+<%@ page import="com.example.study01.domain.member.MemberRepository" %>
 <%@ page import="com.example.study01.domain.member.Member" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-    MemberRepo memberRepository = MemberRepo.getInstance();
+    MemberRepository memberRepository = MemberRepository.getInstance();
     List<Member> members = memberRepository.findAll();
 %>
 <!DOCTYPE html>

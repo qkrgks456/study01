@@ -1,7 +1,7 @@
 package com.example.study01.web.servlet;
 
 import com.example.study01.domain.member.Member;
-import com.example.study01.domain.member.MemberRepo;
+import com.example.study01.domain.member.MemberRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,11 +14,11 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/members")
 public class MemberListServlet extends HttpServlet {
-    private MemberRepo memberRepo = MemberRepo.getInstance();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Member> members = memberRepo.findAll();
+        List<Member> members = memberRepository.findAll();
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter w = resp.getWriter();

@@ -1,7 +1,7 @@
 package com.example.study01.web.servlet;
 
 import com.example.study01.domain.member.Member;
-import com.example.study01.domain.member.MemberRepo;
+import com.example.study01.domain.member.MemberRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,15 +14,14 @@ import java.io.PrintWriter;
 @WebServlet(urlPatterns = "/member/save")
 public class MemberSaveServlet extends HttpServlet {
 
-    private MemberRepo memberRepo = MemberRepo.getInstance();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username");
         int age = Integer.parseInt(req.getParameter("age"));
-
         Member member = new Member(username, age);
-        Member saveMember = memberRepo.save(member);
+        Member saveMember = memberRepository.save(member);
         resp.setContentType("text/html");
         resp.setCharacterEncoding("UTF-8");
         PrintWriter writer = resp.getWriter();

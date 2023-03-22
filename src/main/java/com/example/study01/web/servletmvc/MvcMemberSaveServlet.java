@@ -1,7 +1,7 @@
 package com.example.study01.web.servletmvc;
 
 import com.example.study01.domain.member.Member;
-import com.example.study01.domain.member.MemberRepo;
+import com.example.study01.domain.member.MemberRepository;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/servlet-mvc/members/save")
 public class MvcMemberSaveServlet extends HttpServlet {
-    private MemberRepo memberRepo = MemberRepo.getInstance();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +21,7 @@ public class MvcMemberSaveServlet extends HttpServlet {
         int age = Integer.parseInt(req.getParameter("age"));
 
         Member member = new Member(username, age);
-        Member saveMember = memberRepo.save(member);
+        Member saveMember = memberRepository.save(member);
 
         // Model에 데이터를 보관
         req.setAttribute("member", member);

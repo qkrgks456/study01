@@ -1,22 +1,22 @@
 package com.example.study01.domain.member;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MemberRepo {
-    private static Map<Long, Member> store = new HashMap<>();
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class MemberRepository {
+    private static final Map<Long, Member> store = new HashMap<>();
     private static long seq = 0L;
 
-    private static final MemberRepo instance = new MemberRepo();
+    private static final MemberRepository instance = new MemberRepository();
 
-    public static MemberRepo getInstance() {
+    public static MemberRepository getInstance() {
         return instance;
-    }
-
-    private MemberRepo() {
-
     }
 
     public Member save(Member member) {

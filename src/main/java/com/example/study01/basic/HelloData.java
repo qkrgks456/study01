@@ -6,4 +6,5 @@ import lombok.Data;
 public class HelloData {
     public String username;
     public int age;
+
 }

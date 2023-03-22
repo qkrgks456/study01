@@ -1,7 +1,7 @@
 package com.example.study01.web.servletmvc;
 
 import com.example.study01.domain.member.Member;
-import com.example.study01.domain.member.MemberRepo;
+import com.example.study01.domain.member.MemberRepository;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,11 +14,11 @@ import java.util.List;
 
 @WebServlet(urlPatterns = "/servlet-mvc/members")
 public class MvcMemberListServlet extends HttpServlet {
-    private MemberRepo memberRepo = MemberRepo.getInstance();
+    private MemberRepository memberRepository = MemberRepository.getInstance();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Member> members = memberRepo.findAll();
+        List<Member> members = memberRepository.findAll();
         req.setAttribute("members", members);
 
         String viewPath = "/WEB-INF/views/members.jsp";
